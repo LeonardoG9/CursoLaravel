@@ -26,5 +26,6 @@ Route::get('/sobre-nosotros', function () {
 })->name("nosotros");
 
 Route::get('home/{name}/{apellido}', function ($name,$apellido) {
-    return view('home',['name'=>$name,'apellido'=>$apellido]);
+    $posts=["Opcion1","Opcion2","Opcion3","Opcion4"];
+    return view('home',['posts'=>$posts,'name'=>$name,'apellido'=>$apellido]);
 })->name('home');

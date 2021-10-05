@@ -8,5 +8,25 @@
  </head>
  <body>
      <h1>Hey que pedo cachorros {{"$name $apellido"}}</h1>
+     <ul>
+
+        @foreach ($posts as $post)
+       
+            <li>
+                @if($loop->first)
+                Primero:
+                @else
+                Medio: 
+            @endif
+
+            @if($loop->last)
+                Ultimo:
+                @else
+                Medio:
+            @endif
+            
+                {{$post}}</li>   
+        @endforeach
+     </ul>
  </body>
  </html>
