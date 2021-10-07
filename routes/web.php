@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\dashboard\PostController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +29,7 @@ Route::get('home/{name}/{apellido}', function ($name,$apellido) {
     $posts=["Opcion1","Opcion2","Opcion3","Opcion4"];
     return view('home',['posts'=>$posts,'name'=>$name,'apellido'=>$apellido]);
 })->name('home');
+
+// Route::get('/post', [PostController::class,"index"]);
+
+Route::resource('dashboard/post', PostController::class);

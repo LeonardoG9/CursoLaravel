@@ -16,7 +16,7 @@
                 @if($loop->first)
                 Primero:
                 @else
-                Medio: 
+                Medio:
             @endif
 
             @if($loop->last)
