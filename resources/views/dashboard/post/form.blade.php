@@ -17,9 +17,14 @@
             <label for="categorie" class="form-label">Categorie</label>
             <select class="form-control" name="category_id">
                 @foreach ($categories as $title => $id) 
-                    <option value="{{$id}}">{{$title}}</option>
-
+                    <option {{$post->category_id==$id ? 'selected="selected"' : ''}} value="{{$id}}">{{$title}}</option>
                 @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="posted" class="form-label">Posted?</label>
+            <select class="form-control" name="posted">
+                @include('dashboard.partials.option-posted',['val'=>$post->posted])
             </select>
         </div>
         <div class="mb-3">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostImage;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -29,7 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.posts',['post'=>new Post()]);
+        $categories=Category::pluck('id','title');
+        return view('dashboard.post.posts',['post'=>new Post(),'categories'=>$categories]);
     }
 
     /**
@@ -80,6 +82,17 @@ class PostController extends Controller
     {
         $post->update($request->validated());
         return back()->with('status','Post updated succesfully!');
+    }
+
+    public function image(Request $request, Post $post){
+        $request->validate([
+            'image'=>'required|mimes:jpeg,jpg,bmp,png|max:10240'
+        ]);
+        $filename=time().".".$request->image->extension();
+        $request->image->move(public_path(),$filename);
+        PostImage::create(['image'=>$filename,'post_id'=>$post->id]);
+        return back()->with('status','Image loaded succesfully!');
+
     }
 
     /**

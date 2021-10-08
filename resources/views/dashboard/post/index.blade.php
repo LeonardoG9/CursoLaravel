@@ -9,6 +9,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">URL</th>
                 <th scope="col">Content</th>
+                <th scope="col">Category</th>
                 <th scope="col">Posted</th>
                 <th scope="col">Created</th>
                 <th scope="col">Actions</th>
@@ -21,6 +22,7 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->url_clean }}</td>
                     <td>{{ $post->content }}</td>
+                    <td>{{ $post->category->title}}</td>
                     <td>{{ $post->posted }}</td>
                     <td>{{ $post->created_at->format('d-M-Y') }}</td>
                     <td>
