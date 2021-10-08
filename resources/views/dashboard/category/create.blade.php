@@ -2,7 +2,7 @@
 @section('content')
     @include('dashboard.partials.validation')
 
-    <form action="{{ route('post.store') }}" method="POST">
-    @include('dashboard.post.form')
+    <form action="{{ route('category.store') }}" method="POST">
+    @include('dashboard.category.form')
     </form>
 @endsection

@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePostPost;
+use App\Http\Requests\StoreCategoryPost;
 use App\Models\Category;
-use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        $categories = Category::orderBy('created_at', 'desc')->paginate(5);
 
-        return view('dashboard.post.index', ['posts' => $posts]);
+        return view('dashboard.category.index', ['categories' => $categories]);
     }
 
     /**
@@ -29,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.posts',['post'=>new Post()]);
+        return view('dashboard.category.create',['category'=>new Category()]);
+        
     }
 
     /**
@@ -38,11 +38,10 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostPost $request)
+    public function store(StoreCategoryPost $request)
     {
-        echo 'Hola Mundo: ' . $request->content;
-        Post::create($request->validated());
-        return back()->with('status', 'Post created!');
+        Category::create($request->validated());
+        return back()->with('status', 'Category created!');
     }
 
     /**
@@ -51,10 +50,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Category $category)
     {
-
-        return view('dashboard.post.show', ['post' => $post]);
+        return view('dashboard.category.show', ['category' => $category]);
+        
     }
 
     /**
@@ -63,10 +62,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Category $category)
     {
-        $categories=Category::pluck('id','title');
-        return view('dashboard.post.edit',["post"=>$post,"categories"=>$categories]);
+        return view('dashboard.category.edit',["category"=>$category]);
+        
     }
 
     /**
@@ -76,10 +75,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostPost $request, Post $post)
+    public function update(StoreCategoryPost $request, Category $category)
     {
-        $post->update($request->validated());
-        return back()->with('status','Post updated succesfully!');
+        $category->update($request->validated());
+        return back()->with('status','Category updated succesfully!');
     }
 
     /**
@@ -88,10 +87,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Category $category)
     {
-        $post->delete();
+        $category->delete();
         return back()->with('status','Post deleted succesfully!');
-
     }
 }
