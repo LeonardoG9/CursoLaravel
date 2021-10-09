@@ -10,6 +10,6 @@ class PostImage extends Model
     protected $fillable=['post_id','image'];
 
     public function Post(){
-        return $this->belongsTo (Post::class);
+        return $this->belongsTo(Post::class);
     }
 }

@@ -13,7 +13,7 @@ class Post extends Model
         return $this->belongsTo (Category::class);
     }
     
-    public function PostImage(){
+    public function Image(){
         return $this->hasOne(PostImage::class);
     }
 }
