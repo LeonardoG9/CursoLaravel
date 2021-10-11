@@ -4,10 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue').default;
+window.Vue = require("vue").default;
 
+import Vue from 'vue';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,14 +20,18 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import router from './assets/router'
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+Vue.component('post-modal',require('./components/PostModal.vue').default)
+Vue.component('post-default',require('./components/PostDefault.vue').default)
+// Vue.component('list-posts',require('./components/PostList.vue').default)
 const app = new Vue({
-    el: '#app',
+    el: "#app",
+    data: {
+        message: "Hola perros",
+       
+    },
+    router
+   
+    
 });

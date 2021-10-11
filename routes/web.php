@@ -3,6 +3,7 @@
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\PostController;
 use App\Http\Controllers\dashboard\UserController;
+use App\Http\Controllers\web\WebController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('index');
 
 // Route::get('/pruebas/{nombre}', function ($nombre) {
 //     return "Hola $nombre, conócenos <a href='".route("nosotros")."'>nosotros</a>";
@@ -43,3 +44,7 @@ Route::resource('dashboard/category', CategoryController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [WebController::class, 'index'])->name('index');
+Route::get('/detail/{id}', [WebController::class, 'detail']);
+Route::get('/category/{id}', [WebController::class, 'category']);
+Route::get('/contact', [WebController::class, 'contact']);

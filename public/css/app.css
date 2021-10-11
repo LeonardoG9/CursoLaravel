@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap);
 @charset "UTF-8";
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
@@ -10003,4 +10003,11 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.footer {
+  bottom: 0;
 }
